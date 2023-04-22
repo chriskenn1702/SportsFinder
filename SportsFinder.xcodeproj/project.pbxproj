@@ -8,17 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		E008092E29F496CB00B1399C /* SportsFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008092D29F496CB00B1399C /* SportsFinderApp.swift */; };
-		E008093029F496CB00B1399C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008092F29F496CB00B1399C /* ContentView.swift */; };
+		E008093029F496CB00B1399C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008092F29F496CB00B1399C /* LoginView.swift */; };
 		E008093229F496CD00B1399C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E008093129F496CD00B1399C /* Assets.xcassets */; };
 		E008093529F496CD00B1399C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E008093429F496CD00B1399C /* Preview Assets.xcassets */; };
+		E008093C29F4973300B1399C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E008093B29F4973300B1399C /* GoogleService-Info.plist */; };
+		E008093F29F497C000B1399C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E008093E29F497C000B1399C /* FirebaseAuth */; };
+		E008094129F497C000B1399C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E008094029F497C000B1399C /* FirebaseFirestore */; };
+		E008094329F497C000B1399C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E008094229F497C000B1399C /* FirebaseFirestoreSwift */; };
+		E008094529F497C000B1399C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E008094429F497C000B1399C /* FirebaseStorage */; };
+		E008094729F4991900B1399C /* SportsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008094629F4991900B1399C /* SportsListView.swift */; };
+		E008094929F4998100B1399C /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008094829F4998100B1399C /* PostListView.swift */; };
+		E008094B29F499A600B1399C /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008094A29F499A600B1399C /* PostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E008092A29F496CB00B1399C /* SportsFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E008092D29F496CB00B1399C /* SportsFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsFinderApp.swift; sourceTree = "<group>"; };
-		E008092F29F496CB00B1399C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E008092F29F496CB00B1399C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E008093129F496CD00B1399C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E008093429F496CD00B1399C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E008093B29F4973300B1399C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E008094629F4991900B1399C /* SportsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListView.swift; sourceTree = "<group>"; };
+		E008094829F4998100B1399C /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
+		E008094A29F499A600B1399C /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +38,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E008093F29F497C000B1399C /* FirebaseAuth in Frameworks */,
+				E008094529F497C000B1399C /* FirebaseStorage in Frameworks */,
+				E008094129F497C000B1399C /* FirebaseFirestore in Frameworks */,
+				E008094329F497C000B1399C /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +68,10 @@
 			isa = PBXGroup;
 			children = (
 				E008092D29F496CB00B1399C /* SportsFinderApp.swift */,
-				E008092F29F496CB00B1399C /* ContentView.swift */,
+				E008094C29F49B5B00B1399C /* Views */,
+				E008094D29F49B9500B1399C /* ViewModels */,
+				E008094F29F49BAE00B1399C /* Models */,
+				E008093B29F4973300B1399C /* GoogleService-Info.plist */,
 				E008093129F496CD00B1399C /* Assets.xcassets */,
 				E008093329F496CD00B1399C /* Preview Content */,
 			);
@@ -65,6 +84,31 @@
 				E008093429F496CD00B1399C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E008094C29F49B5B00B1399C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E008092F29F496CB00B1399C /* LoginView.swift */,
+				E008094629F4991900B1399C /* SportsListView.swift */,
+				E008094829F4998100B1399C /* PostListView.swift */,
+				E008094A29F499A600B1399C /* PostView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E008094D29F49B9500B1399C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E008094F29F49BAE00B1399C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +127,12 @@
 			dependencies = (
 			);
 			name = SportsFinder;
+			packageProductDependencies = (
+				E008093E29F497C000B1399C /* FirebaseAuth */,
+				E008094029F497C000B1399C /* FirebaseFirestore */,
+				E008094229F497C000B1399C /* FirebaseFirestoreSwift */,
+				E008094429F497C000B1399C /* FirebaseStorage */,
+			);
 			productName = SportsFinder;
 			productReference = E008092A29F496CB00B1399C /* SportsFinder.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +161,9 @@
 				Base,
 			);
 			mainGroup = E008092129F496CB00B1399C;
+			packageReferences = (
+				E008093D29F497C000B1399C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = E008092B29F496CB00B1399C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +180,7 @@
 			files = (
 				E008093529F496CD00B1399C /* Preview Assets.xcassets in Resources */,
 				E008093229F496CD00B1399C /* Assets.xcassets in Resources */,
+				E008093C29F4973300B1399C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +191,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E008093029F496CB00B1399C /* ContentView.swift in Sources */,
+				E008094729F4991900B1399C /* SportsListView.swift in Sources */,
+				E008093029F496CB00B1399C /* LoginView.swift in Sources */,
+				E008094929F4998100B1399C /* PostListView.swift in Sources */,
+				E008094B29F499A600B1399C /* PostView.swift in Sources */,
 				E008092E29F496CB00B1399C /* SportsFinderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +396,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E008093D29F497C000B1399C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E008093E29F497C000B1399C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E008093D29F497C000B1399C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E008094029F497C000B1399C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E008093D29F497C000B1399C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		E008094229F497C000B1399C /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E008093D29F497C000B1399C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		E008094429F497C000B1399C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E008093D29F497C000B1399C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E008092229F496CB00B1399C /* Project object */;
 }
