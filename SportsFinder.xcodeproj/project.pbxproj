@@ -19,6 +19,9 @@
 		E008094729F4991900B1399C /* SportsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008094629F4991900B1399C /* SportsListView.swift */; };
 		E008094929F4998100B1399C /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008094829F4998100B1399C /* PostListView.swift */; };
 		E008094B29F499A600B1399C /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008094A29F499A600B1399C /* PostView.swift */; };
+		E008095329F49E4500B1399C /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008095229F49E4500B1399C /* Spot.swift */; };
+		E008095529F4A45400B1399C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008095429F4A45400B1399C /* Post.swift */; };
+		E008095729F4A4AA00B1399C /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008095629F4A4AA00B1399C /* PostViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		E008094629F4991900B1399C /* SportsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListView.swift; sourceTree = "<group>"; };
 		E008094829F4998100B1399C /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
 		E008094A29F499A600B1399C /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		E008095229F49E4500B1399C /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		E008095429F4A45400B1399C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		E008095629F4A4AA00B1399C /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,7 @@
 		E008094D29F49B9500B1399C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E008095629F4A4AA00B1399C /* PostViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -107,6 +114,8 @@
 		E008094F29F49BAE00B1399C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E008095229F49E4500B1399C /* Spot.swift */,
+				E008095429F4A45400B1399C /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,8 +202,11 @@
 			files = (
 				E008094729F4991900B1399C /* SportsListView.swift in Sources */,
 				E008093029F496CB00B1399C /* LoginView.swift in Sources */,
+				E008095529F4A45400B1399C /* Post.swift in Sources */,
 				E008094929F4998100B1399C /* PostListView.swift in Sources */,
 				E008094B29F499A600B1399C /* PostView.swift in Sources */,
+				E008095729F4A4AA00B1399C /* PostViewModel.swift in Sources */,
+				E008095329F49E4500B1399C /* Spot.swift in Sources */,
 				E008092E29F496CB00B1399C /* SportsFinderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

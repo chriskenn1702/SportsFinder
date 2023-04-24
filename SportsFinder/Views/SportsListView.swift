@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestoreSwift
 
 struct SportsListView: View {
-    @State var sports = ["Hockey", "Football", "Basketball", "Baseball"]
+    @FirestoreQuery(collectionPath: "spots") var spots: [Spot]
     var body: some View {
         NavigationStack{
-            List(sports, id: \.self) { sport in
+            List(spots) { spot in
                 NavigationLink {
-                    PostListView()
+                    PostListView(spot: spot)
                 } label: {
-                    Text(sport)
+                    Text(spot.sport)
                         .font(.title)
                         .padding(2)
                 }
