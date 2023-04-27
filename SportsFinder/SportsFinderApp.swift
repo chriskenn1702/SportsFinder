@@ -20,11 +20,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct SportsFinderApp: App {
     @StateObject var postVM = PostViewModel()
+    @StateObject var locationManager = LocationManager()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
             LoginView()
                 .environmentObject(postVM)
+                .environmentObject(locationManager)
         }
     }
 }

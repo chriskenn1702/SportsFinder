@@ -18,10 +18,18 @@
 		E008094529F497C000B1399C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E008094429F497C000B1399C /* FirebaseStorage */; };
 		E008094729F4991900B1399C /* SportsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008094629F4991900B1399C /* SportsListView.swift */; };
 		E008094929F4998100B1399C /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008094829F4998100B1399C /* PostListView.swift */; };
-		E008094B29F499A600B1399C /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008094A29F499A600B1399C /* PostView.swift */; };
+		E008094B29F499A600B1399C /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008094A29F499A600B1399C /* NewPostView.swift */; };
 		E008095329F49E4500B1399C /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008095229F49E4500B1399C /* Spot.swift */; };
 		E008095529F4A45400B1399C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008095429F4A45400B1399C /* Post.swift */; };
 		E008095729F4A4AA00B1399C /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008095629F4A4AA00B1399C /* PostViewModel.swift */; };
+		E008096829F780EC00B1399C /* DifficultyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008096729F780EC00B1399C /* DifficultyView.swift */; };
+		E008096A29F83CCE00B1399C /* PhotoScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008096929F83CCE00B1399C /* PhotoScrollView.swift */; };
+		E008096C29F83D0900B1399C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008096B29F83D0900B1399C /* Photo.swift */; };
+		E008096E29F83D4E00B1399C /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008096D29F83D4E00B1399C /* Place.swift */; };
+		E008097029F840A900B1399C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008096F29F840A900B1399C /* LocationManager.swift */; };
+		E008097229F840C100B1399C /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008097129F840C100B1399C /* PlaceViewModel.swift */; };
+		E008097429F8413200B1399C /* PlaceLookUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008097329F8413200B1399C /* PlaceLookUpView.swift */; };
+		E008097729FA214D00B1399C /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008097629FA214D00B1399C /* PostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +41,19 @@
 		E008093B29F4973300B1399C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E008094629F4991900B1399C /* SportsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListView.swift; sourceTree = "<group>"; };
 		E008094829F4998100B1399C /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
-		E008094A29F499A600B1399C /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		E008094A29F499A600B1399C /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
 		E008095229F49E4500B1399C /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		E008095429F4A45400B1399C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E008095629F4A4AA00B1399C /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		E008096729F780EC00B1399C /* DifficultyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyView.swift; sourceTree = "<group>"; };
+		E008096929F83CCE00B1399C /* PhotoScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoScrollView.swift; sourceTree = "<group>"; };
+		E008096B29F83D0900B1399C /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E008096D29F83D4E00B1399C /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		E008096F29F840A900B1399C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E008097129F840C100B1399C /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
+		E008097329F8413200B1399C /* PlaceLookUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLookUpView.swift; sourceTree = "<group>"; };
+		E008097529FA195800B1399C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E008097629FA214D00B1399C /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +90,7 @@
 		E008092C29F496CB00B1399C /* SportsFinder */ = {
 			isa = PBXGroup;
 			children = (
+				E008097529FA195800B1399C /* Info.plist */,
 				E008092D29F496CB00B1399C /* SportsFinderApp.swift */,
 				E008094C29F49B5B00B1399C /* Views */,
 				E008094D29F49B9500B1399C /* ViewModels */,
@@ -98,7 +116,11 @@
 				E008092F29F496CB00B1399C /* LoginView.swift */,
 				E008094629F4991900B1399C /* SportsListView.swift */,
 				E008094829F4998100B1399C /* PostListView.swift */,
-				E008094A29F499A600B1399C /* PostView.swift */,
+				E008094A29F499A600B1399C /* NewPostView.swift */,
+				E008097629FA214D00B1399C /* PostView.swift */,
+				E008096929F83CCE00B1399C /* PhotoScrollView.swift */,
+				E008096729F780EC00B1399C /* DifficultyView.swift */,
+				E008097329F8413200B1399C /* PlaceLookUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -107,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				E008095629F4A4AA00B1399C /* PostViewModel.swift */,
+				E008096F29F840A900B1399C /* LocationManager.swift */,
+				E008097129F840C100B1399C /* PlaceViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -116,6 +140,8 @@
 			children = (
 				E008095229F49E4500B1399C /* Spot.swift */,
 				E008095429F4A45400B1399C /* Post.swift */,
+				E008096B29F83D0900B1399C /* Photo.swift */,
+				E008096D29F83D4E00B1399C /* Place.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,14 +226,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E008096829F780EC00B1399C /* DifficultyView.swift in Sources */,
 				E008094729F4991900B1399C /* SportsListView.swift in Sources */,
 				E008093029F496CB00B1399C /* LoginView.swift in Sources */,
+				E008096E29F83D4E00B1399C /* Place.swift in Sources */,
+				E008097429F8413200B1399C /* PlaceLookUpView.swift in Sources */,
 				E008095529F4A45400B1399C /* Post.swift in Sources */,
 				E008094929F4998100B1399C /* PostListView.swift in Sources */,
-				E008094B29F499A600B1399C /* PostView.swift in Sources */,
+				E008094B29F499A600B1399C /* NewPostView.swift in Sources */,
+				E008096A29F83CCE00B1399C /* PhotoScrollView.swift in Sources */,
+				E008096C29F83D0900B1399C /* Photo.swift in Sources */,
+				E008097729FA214D00B1399C /* PostView.swift in Sources */,
 				E008095729F4A4AA00B1399C /* PostViewModel.swift in Sources */,
+				E008097229F840C100B1399C /* PlaceViewModel.swift in Sources */,
 				E008095329F49E4500B1399C /* Spot.swift in Sources */,
 				E008092E29F496CB00B1399C /* SportsFinderApp.swift in Sources */,
+				E008097029F840A900B1399C /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,9 +373,11 @@
 				DEVELOPMENT_TEAM = V746GNHBX7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SportsFinder/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requires access to the devices location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires access to the devices location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -368,9 +404,11 @@
 				DEVELOPMENT_TEAM = V746GNHBX7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SportsFinder/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requires access to the devices location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires access to the devices location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

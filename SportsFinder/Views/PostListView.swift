@@ -6,23 +6,41 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestoreSwift
 
 struct PostListView: View {
     @State var spot: Spot
-    @State var posts = ["2 Men for Mens team", "Open Ice Time", "Tryouts", "Pond Hockey"]
+    @FirestoreQuery(collectionPath: "spots") var posts: [Post]
+    //@State var posts = ["2 Men for Mens team", "Open Ice Time", "Tryouts", "Pond Hockey"]
     @State var sheetIsPresented = false
     var body: some View {
         NavigationStack{
-            List(posts, id: \.self) { post in
+            List(posts) { post in
                 NavigationLink {
-                    PostView(post: Post(), spot: spot)
+                    if post.author == Auth.auth().currentUser?.email{
+                            NewPostView(post: post, spot: spot)
+                    }
+                    else{
+                            PostView(post: post, spot: spot)
+                    }
                 } label: {
-                    Text(post)
-                        .font(.title)
-                        .padding(2)
+                    VStack(alignment: .leading){//Figure this out
+                        Text(post.title)
+                            .font(.title)
+                            .minimumScaleFactor(0.5)
+                            .multilineTextAlignment(.leading)
+                        HStack{
+                            Text("Posted on:")
+                            Text("\(post.date.formatted(date: .numeric, time: .omitted))")
+                        }
+                        .multilineTextAlignment(.leading)
+                    }
                 }
             }
             .listStyle(.plain)
+            .background(Color("Sky-Blue")) //
+            .toolbarBackground(Color("Sky-Blue"), for: .navigationBar)
             .navigationTitle("Posts")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -35,9 +53,13 @@ struct PostListView: View {
                 }
             }
         }
+        .onAppear{
+            $posts.path = "spots/\(spot.id ?? "")/posts"
+            print("post.path = \($posts.path)")
+        }
         .sheet(isPresented: $sheetIsPresented) {
             NavigationStack{
-                PostView(post: Post(), spot: spot)
+                NewPostView(post: Post(), spot: spot)
             }
         }
     }

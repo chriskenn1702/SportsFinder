@@ -1,8 +1,8 @@
 //
-//  PostView.swift
+//  NewPostView.swift
 //  SportsFinder
 //
-//  Created by Christopher Kennedy on 4/26/23.
+//  Created by Christopher Kennedy on 4/22/23.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import Firebase
 import FirebaseFirestoreSwift
 import PhotosUI
 
-struct PostView: View {
+struct NewPostView: View {
     enum ButtonPressed{
         case photo
     }
@@ -54,7 +54,6 @@ struct PostView: View {
                                 .stroke(.gray.opacity(0.5), lineWidth: 2)
                         }
                         .padding(.bottom)
-                        .disabled(true)
                     HStack{
                         TextField("Event Address", text: $post.address)
                             .font(.title)
@@ -183,6 +182,8 @@ struct PostView: View {
                             .stroke(.gray.opacity(0.5), lineWidth: 2)
                     }
             }
+            
+            .navigationBarBackButtonHidden()
             .toolbarBackground(Color("Sky-Blue"), for: .navigationBar) // only when scrolled down
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -277,10 +278,9 @@ struct PostView: View {
     }
 }
 
-struct PostView_Previews: PreviewProvider {
+struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
-        PostView(post: Post(), spot: Spot(), previewRunning: true)
+        NewPostView(post: Post(), spot: Spot(), previewRunning: true)
             .environmentObject(LocationManager())
     }
 }
-

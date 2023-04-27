@@ -24,13 +24,10 @@ struct LoginView: View {
     var body: some View {
         VStack{
             Group{
-                Image(systemName: "figure.basketball")
+                Image("Sports Finder")
                     .resizable()
                     .scaledToFit()
                     .padding()
-                Text("Sports Locator")
-                    .font(.largeTitle)
-                    .bold()
             }
             .foregroundColor(.indigo)
             
@@ -83,7 +80,7 @@ struct LoginView: View {
             }
             .disabled(buttonDisable)
             .buttonStyle(.borderedProminent)
-            .tint(.indigo)
+            .tint(Color("Action-Blue"))
             .font(.title2)
             .padding(.top)
         }
