@@ -12,31 +12,17 @@ import FirebaseFirestoreSwift
 import PhotosUI
 
 struct PostView: View {
-    enum ButtonPressed{
-        case photo
-    }
-    
-    struct Annotation: Identifiable{
-        let id = UUID().uuidString
-        var name: String
-        var address: String
-        var coordinate: CLLocationCoordinate2D
-    }
     @FirestoreQuery(collectionPath: "posts") var photos: [Photo]
     @EnvironmentObject var postVM: PostViewModel
-    @EnvironmentObject var locationManager: LocationManager
     @State var newPhotos: [Photo] = []
     @State var post: Post
     @State var spot: Spot
     @State var newPhoto = Photo()
-    @State private var annotations: [Annotation] = []
     let regionSize = 500.0
     @State var postedByThisUser = false
     @State var needEquipment = false
     @State var lookupPlacePresented = false
     @State private var showSaveAlert = false
-    @State private var buttonPressed = ButtonPressed.photo
-    @State private var mapRegion = MKCoordinateRegion()
     @State private var selectedPhoto: PhotosPickerItem?
     @State private var uiImageSelected = UIImage()
     @State var previewRunning = false
@@ -47,140 +33,127 @@ struct PostView: View {
         NavigationStack{
             ScrollView{
                 Group{
-                    TextField("Post Title", text: $post.title)
+                    Text(post.title)
                         .font(.title)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.gray.opacity(0.5), lineWidth: 2)
-                        }
+                        .bold()
+                        .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color("Action-Blue"))
                         .padding(.bottom)
                         .disabled(true)
-                    HStack{
-                        TextField("Event Address", text: $post.address)
-                            .font(.title)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(.gray.opacity(0.5), lineWidth: 2)
-                            }
-                        Button("Search"){
-                            lookupPlacePresented.toggle()
+                    
+                    Button(post.address){
+                        let url = URL(string: "maps://?saddr=&daddr=\(post.latitude),\(post.longitude)")
+                        if UIApplication.shared.canOpenURL(url!) {
+                              UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                         }
                     }
+                    .font(.title3)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                    .tint(.green)
                     .padding(.bottom)
                     
-                    DatePicker("Event Date", selection: $post.date)
-                        .padding(.bottom)
+                    HStack{
+                        Text("Event Date:")
+                            .foregroundColor(Color("Action-Blue"))
+                        Text("\(post.date.formatted(date: .numeric, time: .shortened))")
+                            .foregroundColor(Color("Sky-Blue"))
+                    }
+                    .padding(.bottom)
                 }
                 
                 
                 HStack{
                     Text("Difficulty: ")
-                    DifficultyView(rating: $post.skill, interactive: true)
+                    DifficultyView(rating: $post.skill, interactive: false)
                         .padding(.bottom)
                 }
                 
                 HStack{
                     
-                    Text("Gender")
-                    Picker("", selection: $post.gender) {
-                        ForEach(Gender.allCases, id: \.self) { gender in
-                            Text(gender.rawValue.capitalized)
-                                .tag(gender.rawValue)
-                        }
-                    }
-                    Text("Equipment Provided?")
-                    Toggle("", isOn: $post.equipmentNeeded)
+                    Text("Gender:")
+                        .foregroundColor(Color("Action-Blue"))
+                    Text("\(post.gender.capitalized)")
+                        .foregroundColor(Color("Sky-Blue"))
+                    
+                    Text("Equipment Provided:")
+                        .foregroundColor(Color("Action-Blue"))
+                    Text("\(post.equipmentNeeded ? "Yes": "No")")
+                        .foregroundColor(Color("Sky-Blue"))
+                }
+                
+                HStack{
+                    Text("Cost:")
+                        .foregroundColor(Color("Action-Blue"))
+                    Text("$\(post.cost)")
+                        .foregroundColor(Color("Sky-Blue"))
+                    Text("Age Range:")
+                        .foregroundColor(Color("Action-Blue"))
+                    Text("\(post.age)")
+                        .foregroundColor(Color("Sky-Blue"))
                 }
                 .padding(.bottom)
                 
-                HStack{
-                    TextField("Cost", text: $post.cost)
-                        .font(.title)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.gray.opacity(0.5), lineWidth: 2)
-                        }
-                        .keyboardType(.numberPad)
-                    TextField("Age Range", text: $post.age)
-                        .font(.title)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.gray.opacity(0.5), lineWidth: 2)
-                        }
-                }
-                
-                Group{
+                VStack(alignment: .leading){
                     
-                    Text("Contact Information") //Make Leading
+                    Text("Contact Information")
                         .bold()
                         .font(.title3)
+                    Rectangle()
+                        .frame(height: 1)
                     
-                    TextField("Phone Number", text: $post.telephone)
-                        .font(.title)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.gray.opacity(0.5), lineWidth: 2)
-                        }
-                        .padding(.bottom)
-                        .keyboardType(.phonePad)
-                    
-                    TextField("Email", text: $post.email)
-                        .font(.title)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.gray.opacity(0.5), lineWidth: 2)
-                        }
-                        .keyboardType(.emailAddress)
-                        .padding(.bottom)
-                    
-                    TextField("Link", text: $post.link)
-                        .font(.title)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.gray.opacity(0.5), lineWidth: 2)
-                        }
-                        .keyboardType(.webSearch)
-                        .padding(.bottom)
-                }
-                
-                Group {
-                    PhotoScrollView(photos: photos, post: post)
-                    PhotosPicker(selection: $selectedPhoto, matching: .images, preferredItemEncoding: .automatic) {
-                        Image(systemName: "photo")
-                        Text("Add Photo")
-                    }
-                    .onChange(of: selectedPhoto) { newValue in
-                        Task{
-                            do{
-                                if let data = try await newValue?.loadTransferable(type: Data.self){
-                                    if let uiImage = UIImage(data: data){
-                                        uiImageSelected = uiImage
-                                        print("Selected image")
-                                        newPhoto = Photo()
-                                        buttonPressed = .photo
-                                        if post.id == nil{
-                                            showSaveAlert.toggle()
-                                        } else{
-                                            Task{
-                                                let _ = await postVM.saveImage(spot:spot, post: post, photo: newPhoto, image: uiImage)
-                                            }
-                                        }
-                                    }
-                                }
-                            } catch{
-                                print("ERROR: selecting image failed \(error.localizedDescription)")
+                    HStack{
+                        Text("Phone Number: ")
+                            .foregroundColor(Color("Action-Blue"))
+                        Button(post.telephone){
+                            let url = URL(string: "sms://\(post.telephone)")
+                            if UIApplication.shared.canOpenURL(url!) {
+                                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                             }
                         }
+                        .tint(.green)
+                        Spacer()
                     }
+                    
+                    HStack{
+                        Text("Email: ")
+                            .foregroundColor(Color("Action-Blue"))
+                        Button(post.email){//test on own phone
+                            let email = post.email
+                            if let url = URL(string: "mailto:\(email)") {
+                                if #available(iOS 10.0, *) {
+                                    UIApplication.shared.open(url)
+                                } else {
+                                    UIApplication.shared.openURL(url)
+                                }
+                            }
+                        }
+                        .tint(.green)
+                        Spacer()
+                    }
+                    HStack{
+                        Text("Website: ")
+                            .foregroundColor(Color("Action-Blue"))
+                        Link(post.link,
+                             destination: URL(string: "https://\(post.link)/TOS.html")!)
+                        .foregroundColor(.green)
+                    }
+                    Spacer()
                 }
+                .padding(.bottom)
+                
+                PhotoScrollView(photos: photos, post: post)
+            
                 
                 
-                TextField("Post Description", text: $post.body) //Why won't it stretch?
-                    .font(.title)
-                    .frame(maxHeight: 100, alignment: .topLeading)
+                Text(post.body)
+                    .font(.body)
+                    .multilineTextAlignment(.leading)
+                    .padding()
                     .overlay {
                         RoundedRectangle(cornerRadius: 5)
-                            .stroke(.gray.opacity(0.5), lineWidth: 2)
+                            .stroke(.gray.opacity(0.5), lineWidth: post.body == "" ? 0 : 2)
                     }
             }
             .toolbarBackground(Color("Sky-Blue"), for: .navigationBar) // only when scrolled down
@@ -190,86 +163,12 @@ struct PostView: View {
         .onAppear{
             if !previewRunning && post.id != nil{
                 $photos.path = "spots/\(spot.id ?? "")/posts/\(post.id ?? "")/photos"
-                print("reviews.path = spots/\(spot.id ?? "")/post\(post.id ?? "")/photos")
-                
-                
+                print("photos.path = spots/\(spot.id ?? "")/post\(post.id ?? "")/photos")
             } else{
                 showingAsSheet = true
             }
             if post.author == Auth.auth().currentUser?.email{
                 postedByThisUser = true
-            }
-            if post.id != nil{
-                mapRegion = MKCoordinateRegion(center: post.coordiate, latitudinalMeters: regionSize, longitudinalMeters: regionSize)
-            } else{
-                Task{
-                    mapRegion = MKCoordinateRegion(center: locationManager.location?.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: regionSize, longitudinalMeters: regionSize)
-                    locationManager.region = mapRegion
-                }
-            }
-            annotations = [Annotation(name: post.name, address: post.address, coordinate: post.coordiate)]
-            
-        }
-        .sheet(isPresented: $lookupPlacePresented, content: {
-            PlaceLookUpView(post: $post)
-        })
-        .alert("Cannot Rate Place Unless It is Saved", isPresented: $showSaveAlert) {
-            Button("Cancel", role: .cancel) {}
-            Button("Save", role: .none) {
-                Task{
-                    let success = await postVM.savePost(spot: spot, post: post)
-                    post = postVM.post
-                    print(post.id ?? "No ID")
-                    if success{
-                        $photos.path = "spots/\(spot.id ?? "")/posts/\(post.id ?? "")/photos"
-                        print($photos.path)
-                        Task{
-                            let _ = await postVM.saveImage(spot:spot, post: post, photo: newPhoto, image: uiImageSelected)
-                        }
-                    } else{
-                        print("DANG! Error saving spot")
-                    }
-                }
-            }
-        } message: {
-            Text("Would you like to save this alert first so that you can enter a review?")
-        }
-        .toolbar {
-            if postedByThisUser{
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
-                        Task{
-                            let success = await postVM.savePost(spot: spot, post: post)
-                            if success{
-                                dismiss()
-                            } else{
-                                print("ERROR saving data in ReviewView")
-                            }
-                        }
-                    }
-                }
-                if post.id != nil{
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        Spacer()
-                        Button {
-                            Task{
-                                let success =  await postVM.deletePost(spot: spot, post: post)
-                                if success{
-                                    dismiss()
-                                }
-                            }
-                            
-                        } label: {
-                            Image(systemName: "trash")
-                        }
-                        
-                    }
-                }
             }
             
         }

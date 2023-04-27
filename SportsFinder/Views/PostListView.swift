@@ -31,8 +31,9 @@ struct PostListView: View {
                             .minimumScaleFactor(0.5)
                             .multilineTextAlignment(.leading)
                         HStack{
-                            Text("Posted on:")
+                            Text("Event Date:")
                             Text("\(post.date.formatted(date: .numeric, time: .omitted))")
+                            Text("Skill Level: \(post.skill)/5")
                         }
                         .multilineTextAlignment(.leading)
                     }
@@ -67,6 +68,6 @@ struct PostListView: View {
 
 struct PostListView_Previews: PreviewProvider {
     static var previews: some View {
-        PostListView(spot: Spot())
+        PostListView(spot: Spot(id: "Baseball", sport: "Baseball"))
     }
 }

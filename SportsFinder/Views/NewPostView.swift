@@ -69,11 +69,13 @@ struct NewPostView: View {
                     
                     DatePicker("Event Date", selection: $post.date)
                         .padding(.bottom)
+                        .foregroundColor(Color("Action-Blue"))
                 }
                 
                 
                 HStack{
                     Text("Difficulty: ")
+                        .foregroundColor(Color("Action-Blue"))
                     DifficultyView(rating: $post.skill, interactive: true)
                         .padding(.bottom)
                 }
@@ -81,6 +83,7 @@ struct NewPostView: View {
                 HStack{
                     
                     Text("Gender")
+                        .foregroundColor(Color("Action-Blue"))
                     Picker("", selection: $post.gender) {
                         ForEach(Gender.allCases, id: \.self) { gender in
                             Text(gender.rawValue.capitalized)
@@ -88,6 +91,7 @@ struct NewPostView: View {
                         }
                     }
                     Text("Equipment Provided?")
+                        .foregroundColor(Color("Action-Blue"))
                     Toggle("", isOn: $post.equipmentNeeded)
                 }
                 .padding(.bottom)
@@ -113,6 +117,7 @@ struct NewPostView: View {
                     Text("Contact Information") //Make Leading
                         .bold()
                         .font(.title3)
+                        .foregroundColor(Color("Action-Blue"))
                     
                     TextField("Phone Number", text: $post.telephone)
                         .font(.title)

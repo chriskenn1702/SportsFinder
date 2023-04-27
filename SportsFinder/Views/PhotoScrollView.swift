@@ -34,6 +34,12 @@ struct PhotoScrollView: View {
                             .scaledToFill()
                             .frame(width: 80, height: 80)
                             .clipped()
+                            .onTapGesture {
+                                    let renderer = ImageRenderer(content: image)
+                                    selectedPhoto = photo
+                                    uiImage = renderer.uiImage ?? UIImage()
+                                    showPhotoViewerView.toggle()
+                                }
                     } placeholder: {
                        ProgressView()
                             .frame(width: 80, height: 80)
@@ -41,7 +47,11 @@ struct PhotoScrollView: View {
 
                 }
             }
-        }
+        }.sheet(isPresented: $showPhotoViewerView, content: {
+            NavigationStack{
+                PhotoView(uiImage: uiImage)
+            }
+        })
         .frame(height: 80)
         .padding(.horizontal, 4)
     }

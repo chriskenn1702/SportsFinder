@@ -14,7 +14,7 @@ struct DifficultyView: View {
     let unselected = Image(systemName: "trophy")
     let selected = Image(systemName: "trophy.fill")
     var font: Font = .largeTitle
-    let fillColor: Color = .red
+    let fillColor: Color = Color("Sky-Blue")
     let emptyColor: Color = .gray
     
     var body: some View {

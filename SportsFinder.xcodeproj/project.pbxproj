@@ -30,6 +30,7 @@
 		E008097229F840C100B1399C /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008097129F840C100B1399C /* PlaceViewModel.swift */; };
 		E008097429F8413200B1399C /* PlaceLookUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008097329F8413200B1399C /* PlaceLookUpView.swift */; };
 		E008097729FA214D00B1399C /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008097629FA214D00B1399C /* PostView.swift */; };
+		E0AB8F1B29FAE221004B08E1 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB8F1A29FAE221004B08E1 /* PhotoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		E008097329F8413200B1399C /* PlaceLookUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLookUpView.swift; sourceTree = "<group>"; };
 		E008097529FA195800B1399C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E008097629FA214D00B1399C /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		E0AB8F1A29FAE221004B08E1 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				E008094A29F499A600B1399C /* NewPostView.swift */,
 				E008097629FA214D00B1399C /* PostView.swift */,
 				E008096929F83CCE00B1399C /* PhotoScrollView.swift */,
+				E0AB8F1A29FAE221004B08E1 /* PhotoView.swift */,
 				E008096729F780EC00B1399C /* DifficultyView.swift */,
 				E008097329F8413200B1399C /* PlaceLookUpView.swift */,
 			);
@@ -229,6 +232,7 @@
 				E008096829F780EC00B1399C /* DifficultyView.swift in Sources */,
 				E008094729F4991900B1399C /* SportsListView.swift in Sources */,
 				E008093029F496CB00B1399C /* LoginView.swift in Sources */,
+				E0AB8F1B29FAE221004B08E1 /* PhotoView.swift in Sources */,
 				E008096E29F83D4E00B1399C /* Place.swift in Sources */,
 				E008097429F8413200B1399C /* PlaceLookUpView.swift in Sources */,
 				E008095529F4A45400B1399C /* Post.swift in Sources */,
