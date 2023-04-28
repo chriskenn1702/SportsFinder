@@ -45,7 +45,7 @@ struct PostView: View {
                     Button(post.address){
                         let url = URL(string: "maps://?saddr=&daddr=\(post.latitude),\(post.longitude)")
                         if UIApplication.shared.canOpenURL(url!) {
-                              UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                         }
                     }
                     .font(.title3)
@@ -119,7 +119,7 @@ struct PostView: View {
                     HStack{
                         Text("Email: ")
                             .foregroundColor(Color("Action-Blue"))
-                        Button(post.email){//test on own phone
+                        Button(post.email.lowercased()){//test on own phone
                             let email = post.email
                             if let url = URL(string: "mailto:\(email)") {
                                 if #available(iOS 10.0, *) {
@@ -135,16 +135,15 @@ struct PostView: View {
                     HStack{
                         Text("Website: ")
                             .foregroundColor(Color("Action-Blue"))
-                        Link(post.link,
+                        Link(post.link.lowercased(),
                              destination: URL(string: "https://\(post.link)/TOS.html")!)
                         .foregroundColor(.green)
                     }
                     Spacer()
                 }
-                .padding(.bottom)
                 
                 PhotoScrollView(photos: photos, post: post)
-            
+                
                 
                 
                 Text(post.body)
@@ -158,6 +157,8 @@ struct PostView: View {
             }
             .toolbarBackground(Color("Sky-Blue"), for: .navigationBar) // only when scrolled down
             .navigationBarTitleDisplayMode(.inline)
+            
+            .ignoresSafeArea()
         }
         
         .onAppear{

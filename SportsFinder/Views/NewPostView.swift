@@ -12,10 +12,6 @@ import FirebaseFirestoreSwift
 import PhotosUI
 
 struct NewPostView: View {
-    enum ButtonPressed{
-        case photo
-    }
-    
     struct Annotation: Identifiable{
         let id = UUID().uuidString
         var name: String
@@ -35,7 +31,6 @@ struct NewPostView: View {
     @State var needEquipment = false
     @State var lookupPlacePresented = false
     @State private var showSaveAlert = false
-    @State private var buttonPressed = ButtonPressed.photo
     @State private var mapRegion = MKCoordinateRegion()
     @State private var selectedPhoto: PhotosPickerItem?
     @State private var uiImageSelected = UIImage()
@@ -118,6 +113,7 @@ struct NewPostView: View {
                         .bold()
                         .font(.title3)
                         .foregroundColor(Color("Action-Blue"))
+
                     
                     TextField("Phone Number", text: $post.telephone)
                         .font(.title)
@@ -161,7 +157,6 @@ struct NewPostView: View {
                                         uiImageSelected = uiImage
                                         print("Selected image")
                                         newPhoto = Photo()
-                                        buttonPressed = .photo
                                         if post.id == nil{
                                             showSaveAlert.toggle()
                                         } else{
@@ -179,9 +174,9 @@ struct NewPostView: View {
                 }
                 
                 
-                TextField("Post Description", text: $post.body) //Why won't it stretch?
+                TextField("Post Description", text: $post.body, axis: .vertical) //Why won't it stretch?
                     .font(.title)
-                    .frame(maxHeight: 100, alignment: .topLeading)
+                    .lineLimit(5, reservesSpace: true)
                     .overlay {
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(.gray.opacity(0.5), lineWidth: 2)
@@ -189,7 +184,6 @@ struct NewPostView: View {
             }
             
             .navigationBarBackButtonHidden()
-            .toolbarBackground(Color("Sky-Blue"), for: .navigationBar) // only when scrolled down
             .navigationBarTitleDisplayMode(.inline)
         }
         
